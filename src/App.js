@@ -3,37 +3,31 @@ import './App.css';
 
 
 function App() {
-  const [input, setInput] = useState("");
+  const [FInput, setFInput] = useState("");
+  const [SInput, setSInput] = useState("");
   const [operator, setOperator] = useState(""); 
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState("");
 
   function displayResult(){
-    // ERROR of 'badState' was because the displayResult func included parenthesis
-    var resultDisplay = 0;
-
-    if (input.includes("+")){
-      input.split("+").map((element) => resultDisplay += parseFloat(element));
-      setResult(resultDisplay)
-    } 
-    else if (input.includes("-")){
-      var test = input.split("-");
-      var result = parseFloat(test[0]) - parseFloat(test[1]);
-      setResult(result);
+    if (operator == "+"){
+      setResult((parseFloat(FInput) + parseFloat(SInput)));
     }
-    else if (input.includes("x")){
-      var test = input.split("x");
-      var result = parseFloat(test[0]) * parseFloat(test[1]);
-      setResult(result);
+    else if (operator == "-"){
+      setResult((parseFloat(FInput) - parseFloat(SInput)));
     }
-    else if (input.includes("/")){
-      var test = input.split("/");
-      var result = parseFloat(test[0]) / parseFloat(test[1]);
-      setResult(result);
+    else if (operator == "x"){
+      setResult((parseFloat(FInput) * parseFloat(SInput)));
+    }
+    else if (operator == "/"){
+      setResult((parseFloat(FInput) / parseFloat(SInput)));
     }
 
-    return (
-      setInput(null)
-    ) 
+    return(
+      setFInput(""),
+      setSInput(""),
+      setOperator("")
+      
+    )   
   }
   
   function DisplayButtons(){
@@ -42,9 +36,41 @@ function App() {
     var opArray = [".", "+", "-","x", "/"];
 
     var displayNumArr = numArray.map((element) => {
+
       return (
         <div key={element}>
-          <button className="buttons" onClick={() => setInput(input + element)}>{element}</button>
+          <button 
+            
+            className="buttons"
+            onClick={() => {
+              if (result == ""){
+
+                if (operator == ""){
+                  setFInput(FInput + element)
+                }
+                else {
+                  setSInput(SInput + element)
+
+                }
+
+              }
+              else {
+                if (operator == ""){
+                  setFInput(result + element) 
+                  setResult("");
+                }
+                else {
+                  //setSInput(SInput + element)
+                  setFInput(result);
+                  setSInput(SInput + element);
+                  setResult("");
+                }
+
+              }
+            }}>
+            {element}
+
+          </button>
         </div>
       )
       
@@ -53,40 +79,57 @@ function App() {
     var displayOpArray = opArray.map((element) => {
       return (
         <div key={element}>
-          <button className="buttons" onClick={() => setOperator(element)}>{element}</button>
+          <button className="buttons" onClick = {() => setOperator(element)}>
+            {element}</button>
         </div>
       )
       
     })
+
+    // Testing
+    console.log("TESTING")
+    console.log("FInput: ", FInput);
+    console.log("OP: ", operator);
+    console.log("SInput: ", SInput);
+    console.log("Result: ", result);
 
     return (
       <div className="gridContainer">
         {displayNumArr}
         {displayOpArray}
         <button className="buttons" onClick={displayResult}> =</button>
-        <button className="clearBtn" onClick={() => {
-          return (
-            setInput(""),
-            setResult(null)
-          )
-          
-        }}> CLEAR </button>
+        <button 
+          className="clearBtn" 
+          onClick = {() => {
+
+            return (
+              setFInput(""),
+              setSInput(""),
+              setOperator(""),
+              setResult("")
+
+            )
+            
+          }}> CLEAR </button>
       </div>
       
     )
   }
 
+  var test = SInput == ""? FInput : SInput;
+  
   return (
 
     <div >
 
-      <h2>Simple Calculator</h2>
+      <h2 className="Title">Simple Calculator</h2>
 
       <div className="outerBox">
 
           <div className="header">
             <div className="displayBar">
-              <p>{result == null?  input : result}</p>
+              {result == ""? <p className="pTag">{test} </p> : <p className = "pTag">{result}=</p>}
+              
             </div>
           </div>
 
@@ -105,5 +148,3 @@ function App() {
 
 export default App;
 
-
-// Making a Simple Calculator App

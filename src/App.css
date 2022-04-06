@@ -1,17 +1,20 @@
 
 .outerBox {
+    position: relative;
     height: 370px;
     width: 270px;
     background-color: rgb(157, 157, 157);
+    margin: 0 auto;
 }
 
 .header {
     position: relative;
-    height: 12%;
+    height: 15%;
     width: 85%;
     left: 7%;
     top: 5%;
     background-color: rgb(227, 222, 222);
+    
 }
 
 .body {
@@ -20,15 +23,18 @@
     height: 72%;
     width: 85%;
     left: 7%;
-    top: 10%;
+    top: 9%;
     background-color: rgb(202, 198, 198);
+    
 
 }
 
 .buttons {
-    font-size: 16px;
+    font-size: 23px;
     width: 65px;
     height: 40px;
+    font-family: 'Bebas Neue',
+    cursive;
 }
 
 
@@ -46,14 +52,37 @@
     width: 135px;
     height: 39px;
     top: 1px;
+    font-size: 22px ;
+    font-family: 'Bebas Neue',
+    cursive;
 }
 
 .displayBar {
     position: relative;
-    height: 70%;
-    width: 94%;
+    height: 73%;
+    width: 90%;
     top: 13%;
-    left: 2.5%;
+    left: 4.5%;
     background-color: white;
+    text-align: right;
+    font-size: 25px;
+    font-family: 'Bebas Neue',
+    cursive;
 }
+
+.pTag {
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.Title {
+    position: relative;
+    font-family: 'Bebas Neue',
+    cursive;
+    font-size: 35px;
+    text-align: center;
+    padding-top: 3%;
+    letter-spacing: 2px;
+}
+
 
