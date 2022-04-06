@@ -4,64 +4,25 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState("");
-  
 
+  // Just have a const variable?
+  
   function DisplayButtons(){
 
-    // Make an Array of buttons 
-    var divArray = [];
+    var testingArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "=", "+", "x", "/"];
 
-    for (var i=0; i<15; i++) {
-      if (i == 9){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput("0")} className="buttons">0</button>
-        </div>)
-      }
-      else if (i == 10){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput(".")} className="buttons">.</button>
-        </div>)
-      }
-      else if (i == 11){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput("")}className="buttons">=</button>
-        </div>)
-      }
-      else if (i == 12){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput("+")}className="buttons">+</button>
-        </div>)
-      }
-      else if (i == 13){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput("x")}className="buttons">x</button>
-        </div>)
-      }
-      else if (i == 14){
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput("/")} className="buttons">÷</button>
-          </div>)
-      }
-      else {
-        var tempState = [...input + i];
-        divArray.push(
-        <div key={i+1}>
-          <button onClick={() => setInput(tempState)}className="buttons">{i+1}</button>
-        </div>)
-      }
-
-    }
-    
+    var newArr = testingArray.map((element) => {
+      return (
+        <div key={element}>
+          <button className="buttons" onClick={() => setInput(element)}>{element}</button>
+        </div>
+      )
+      
+    })
 
     return (
       <div className="gridContainer">
-        {divArray}
+        {newArr}
         <button className="clearBtn">CLEAR</button>
       </div>
       
@@ -102,4 +63,4 @@ export default App;
 
 // Making a Simple Calculator App
 
-// Create this app without following any tutorials. Just brute force your way to get something working. At the end, watch a tutorial to see how others more experienced structured thier applications. 
+// 1. Make the other buttons display the proper input
