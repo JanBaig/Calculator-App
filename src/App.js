@@ -19,7 +19,7 @@ function App() {
       setResult((parseFloat(FInput) * parseFloat(SInput)));
     }
     else if (operator == "/"){
-      setResult((parseFloat(FInput) / parseFloat(SInput)));
+      setResult(((parseFloat(FInput) / parseFloat(SInput))).toFixed(2));
     }
 
     return(
@@ -32,8 +32,8 @@ function App() {
   
   function DisplayButtons(){
 
-    var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-    var opArray = [".", "+", "-","x", "/"];
+    var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
+    var opArray = ["+", "-","x", "/"];
 
     var displayNumArr = numArray.map((element) => {
 
@@ -147,4 +147,9 @@ function App() {
 }
 
 export default App;
+
+
+// Improvements :
+// Design
+
 
